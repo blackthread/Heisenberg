@@ -1,0 +1,68 @@
+# .NET Core files
+bin/
+obj/
+project.lock.json
+.DS_Store
+*.swp
+*.*~
+project.fragment.lock.json
+artifact.lock.json
+**/TestResults
+**/wwwroot
+*.user
+*.userosscache
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+
+# Microsoft Visual Studio files
+**/.vs
+*.pidb
+*.svclog
+*.suo
+*.user
+*.userprefs
+*.log
+*.sln.docstates
+*.sln.ide/
+
+# ReSharper files
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.resharper.user
+
+# TeamCity files
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# NCrunch
+_NCrunch*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# Azure DevOps files
+.azure/
+
+# Visual Studio Code files
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.dotCover
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
