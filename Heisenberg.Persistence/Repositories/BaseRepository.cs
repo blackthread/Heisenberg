@@ -13,7 +13,8 @@ namespace Heisenberg.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id)
+
+        public async Task<T?> GetByIdAsync(int id)
         {
             T? t = await _dbContext.Set<T>().FindAsync(id);
             return t;
@@ -48,6 +49,7 @@ namespace Heisenberg.Persistence.Repositories
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
+
 
     }
 }

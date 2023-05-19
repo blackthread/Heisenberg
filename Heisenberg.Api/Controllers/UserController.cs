@@ -24,5 +24,14 @@ namespace Heisenberg.Api.Controllers
             return Ok(dtos);
         }
 
+
+        [HttpGet("{id}", Name = "GetUserById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<UserDetailVm>> GetUserById(int id)
+        {
+            var dtos = await _mediator.Send(new GetUsersDetailQuery(){ Id = id});
+            return Ok(dtos);
+        }
     }
 }

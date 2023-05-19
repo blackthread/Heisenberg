@@ -34,7 +34,7 @@ namespace Heisenberg.Persistence
         
 
 
-        public DbSet<TodoItem> ToDoItems { get; set; }
+        public DbSet<ToDoItem> ToDoItems { get; set; }
 
         public DbSet<ToDoList> ToDoLists { get; set; }
 
@@ -57,10 +57,10 @@ namespace Heisenberg.Persistence
             );
 
             // ToDoItems dummy data
-            modelBuilder.Entity<TodoItem>().HasData(
-                new TodoItem { ID = 1, Description = "Task 1", DueDate = DateTime.Now.AddDays(1), IsComplete = false, ToDoListID = 1 },
-                new TodoItem { ID = 2, Description = "Task 2", DueDate = DateTime.Now.AddDays(2), IsComplete = false, ToDoListID = 1 },
-                new TodoItem { ID = 3, Description = "Task 3", DueDate = DateTime.Now.AddDays(3), IsComplete = false, ToDoListID = 2 }
+            modelBuilder.Entity<ToDoItem>().HasData(
+                new ToDoItem { ID = 1, Description = "Task 1", DueDate = DateTime.Now.AddDays(1), IsComplete = false, ToDoListID = 1 },
+                new ToDoItem { ID = 2, Description = "Task 2", DueDate = DateTime.Now.AddDays(2), IsComplete = false, ToDoListID = 1 },
+                new ToDoItem { ID = 3, Description = "Task 3", DueDate = DateTime.Now.AddDays(3), IsComplete = false, ToDoListID = 2 }
             );
         }
 

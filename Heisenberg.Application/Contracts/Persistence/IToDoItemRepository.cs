@@ -1,4 +1,4 @@
-﻿using ToDoItem = Heisenberg.Domain.Entities.TodoItem;
+﻿using ToDoItem = Heisenberg.Domain.Entities.ToDoItem;
 
 namespace Heisenberg.Application.Contracts.Persistence
 {

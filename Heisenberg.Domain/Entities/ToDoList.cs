@@ -12,7 +12,7 @@ namespace Heisenberg.Domain.Entities
 
         // Navigation properties
         public User? User { get; set; }
-        public ICollection<TodoItem>? Tasks { get; set; }
+        public ICollection<ToDoItem>? ToDoItems { get; set; }
     }
 
 }
