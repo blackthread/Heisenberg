@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heisenberg.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heisenberg.Api", "Heisenberg.Api\Heisenberg.Api.csproj", "{9DDD6691-F90D-4364-9AED-995DDF465296}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heisenberg.Persistence", "Heisenberg.Persistence\Heisenberg.Persistence.csproj", "{0F7D1FDA-4302-4E57-93F2-92E7170715AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{9DDD6691-F90D-4364-9AED-995DDF465296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DDD6691-F90D-4364-9AED-995DDF465296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DDD6691-F90D-4364-9AED-995DDF465296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7D1FDA-4302-4E57-93F2-92E7170715AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7D1FDA-4302-4E57-93F2-92E7170715AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7D1FDA-4302-4E57-93F2-92E7170715AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7D1FDA-4302-4E57-93F2-92E7170715AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{F4D795C7-A695-42BC-A693-1012CB44A57A} = {25711E81-A828-4193-AE25-3F401CFAF720}
 		{812925F0-EA0A-4ACA-B94F-216FA5D5A01D} = {C138E285-C21A-4EE8-9195-1992DC60B536}
 		{9DDD6691-F90D-4364-9AED-995DDF465296} = {88AE141A-907B-41EC-B366-6062088CDED0}
+		{0F7D1FDA-4302-4E57-93F2-92E7170715AC} = {C138E285-C21A-4EE8-9195-1992DC60B536}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9E3E1C4-76A5-43C7-8271-4389419E88B8}
