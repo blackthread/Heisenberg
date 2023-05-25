@@ -11,7 +11,7 @@ namespace Heisenberg.Persistence
       public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<HeisenbergDbContext>(options =>
-                           options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                           options.UseSqlServer(configuration.GetConnectionString("HeisenbergConnectionString")));
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 
             return services;

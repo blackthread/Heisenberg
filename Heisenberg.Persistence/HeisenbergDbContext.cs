@@ -1,19 +1,24 @@
 ﻿using Heisenberg.Application.Contracts;
 using Heisenberg.Domain.Common;
 using Heisenberg.Domain.Entities;
+using Heisenberg.Persistence.IdentityModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Heisenberg.Persistence
 {
-    public  class HeisenbergDbContext : DbContext
-    {
-        private readonly ILoggedInUserService _loggedInUserService;
 
-        public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options, ILoggedInUserService loggedInUserService)
-           : base(options)
-        {
-            _loggedInUserService = loggedInUserService;
-        }
+
+    public class HeisenbergDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
+    {
+        // private readonly ILoggedInUserService _loggedInUserService;
+
+        //   public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options, ILoggedInUserService loggedInUserService)
+        //      : base(options)
+        //   {
+        //       _loggedInUserService = loggedInUserService;
+        //   }
 
         /*
         set persistence as startup
@@ -21,49 +26,56 @@ namespace Heisenberg.Persistence
         run add-migration initial
         run update-database
         */
-        public HeisenbergDbContext()
+
+        public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options)
+            : base(options)
         {
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=LAPTOP-9MEGBOCG; Database = HeisenbergDb; Trusted_Connection = True;TrustServerCertificate=true;");
-            base.OnConfiguring(optionsBuilder);
-        }
-
-        
-
+        public DbSet<AppUser> Users { get; set; }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
 
-        public DbSet<ToDoList> ToDoLists { get; set; }
-
-        public DbSet<User> Users { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(HeisenbergDbContext).Assembly);
-
-            // Users dummy data
-            modelBuilder.Entity<User>().HasData(
-                new User { ID = 1, Name = "User1", Email = "user1@example.com", Password = "Password1" },
-                new User { ID = 2, Name = "User2", Email = "user2@example.com", Password = "Password2" }
-            );
-
-            // ToDoLists dummy data
-            modelBuilder.Entity<ToDoList>().HasData(
-                new ToDoList { ID = 1, Title = "User1's ToDoList", UserID = 1 },
-                new ToDoList { ID = 2, Title = "User2's ToDoList", UserID = 2 }
-            );
-
-            // ToDoItems dummy data
-            modelBuilder.Entity<ToDoItem>().HasData(
-                new ToDoItem { ID = 1, Description = "Task 1", DueDate = DateTime.Now.AddDays(1), IsComplete = false, ToDoListID = 1 },
-                new ToDoItem { ID = 2, Description = "Task 2", DueDate = DateTime.Now.AddDays(2), IsComplete = false, ToDoListID = 1 },
-                new ToDoItem { ID = 3, Description = "Task 3", DueDate = DateTime.Now.AddDays(3), IsComplete = false, ToDoListID = 2 }
-            );
+            optionsBuilder.UseSqlServer("Server=LAPTOP-9MEGBOCG;Database=HeisenbergDb;Trusted_Connection=True;TrustServerCertificate=true;");
+            base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<IdentityUser>().ToTable("Users");
+            builder.Entity<IdentityRole>().ToTable("Roles");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
+            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
+            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
+            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
+            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
+
+
+            // Seed ToDoItems
+            builder.Entity<ToDoItem>().HasData(
+                new ToDoItem { ID = 1, Description = "Description 1", IsComplete = false, DueDate = DateTime.UtcNow },
+                new ToDoItem { ID = 2, Description = "Description 2", IsComplete = false, DueDate = DateTime.UtcNow }
+            // Add more seed data as needed
+            );
+
+            // Create a user that can login
+            var hasher = new PasswordHasher<IdentityUser>();
+            var user = new IdentityUser
+            {
+                Id = "13",
+                UserName = "YourUsername",
+                NormalizedUserName = "YOURUSERNAME",
+                Email = "your@email.com",
+                NormalizedEmail = "YOUREMAIL@EMAIL.COM",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "YourPassword")
+            };
+
+            builder.Entity<IdentityUser>().HasData(user);
+        }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -73,11 +85,12 @@ namespace Heisenberg.Persistence
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedDate = DateTime.Now;
-                        entry.Entity.CreatedBy = _loggedInUserService.UserId;
+                      //  entry.Entity.CreatedBy = _loggedInUserService.UserId;
+                        entry.Entity.CreatedBy = "Tron";
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedDate = DateTime.Now;
-                        entry.Entity.LastModifiedBy = _loggedInUserService.UserId;
+                        entry.Entity.LastModifiedBy = "Steve";
                         break;
                 }
             }
@@ -85,5 +98,9 @@ namespace Heisenberg.Persistence
         }
 
 
+
+
     }
+
+    
 }

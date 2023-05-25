@@ -4,6 +4,7 @@ using Heisenberg.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Heisenberg.Persistence.Migrations
 {
     [DbContext(typeof(HeisenbergDbContext))]
-    partial class HeisenbergDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230525124449_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,24 +57,6 @@ namespace Heisenberg.Persistence.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ToDoItems");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = 1,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description 1",
-                            DueDate = new DateTime(2023, 5, 25, 13, 5, 2, 758, DateTimeKind.Utc).AddTicks(1960),
-                            IsComplete = false
-                        },
-                        new
-                        {
-                            ID = 2,
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Description 2",
-                            DueDate = new DateTime(2023, 5, 25, 13, 5, 2, 758, DateTimeKind.Utc).AddTicks(1963),
-                            IsComplete = false
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -197,24 +182,6 @@ namespace Heisenberg.Persistence.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
 
                     b.UseTphMappingStrategy();
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "13",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "dbea3548-f8cc-4ff3-ad13-85a8211ff3d7",
-                            Email = "your@email.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "YOUREMAIL@EMAIL.COM",
-                            NormalizedUserName = "YOURUSERNAME",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP7DD0VttoLvX/exgnM6QaCIGKB8GGR2TOTqpcWl0uMvh212DgVfSuoxEJ2UMhQolA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "9336684e-6f3b-4222-ae6f-aee5d3670034",
-                            TwoFactorEnabled = false,
-                            UserName = "YourUsername"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>

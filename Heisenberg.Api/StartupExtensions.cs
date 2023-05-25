@@ -5,6 +5,7 @@ using Heisenberg.Api.Services;
 using Heisenberg.Application;
 using Microsoft.OpenApi.Models;
 
+
 namespace Heisenberg.Api
 {
     public static class StartupExtensions
@@ -15,12 +16,12 @@ namespace Heisenberg.Api
 
             AddSwagger(builder.Services);
 
-
             //builder.Services
             //   builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddApplicationServices();
             builder.Services.AddPersistenceServices(builder.Configuration);
-         //   builder.Services.AddIdentityServices(builder.Configuration);
+
+
 
             builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
@@ -45,13 +46,12 @@ namespace Heisenberg.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GloboTicket Ticket Management API");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Heisenberg API");
                 });
             }
 
             app.UseHttpsRedirection();
 
-            //app.UseRouting();
             
             app.UseAuthentication();
 
@@ -105,7 +105,7 @@ namespace Heisenberg.Api
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "GloboTicket Ticket Management API",
+                    Title = "Heisenberg API",
 
                 });
 
