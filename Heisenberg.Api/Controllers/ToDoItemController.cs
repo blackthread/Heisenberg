@@ -20,8 +20,11 @@ namespace Heisenberg.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult<List<ToDoItemVm>>> GetAllToDoItems()
         {
-            var dtos = await _mediator.Send(new GetToDoItemListQuery());
-            return Ok(dtos);
+          //  var dtos = await _mediator.Send(new GetToDoItemListQuery());
+            var x = new List<ToDoItemVm>();
+            x.Append(new ToDoItemVm { Id = 1, Description = "Test" });
+            x.Append(new ToDoItemVm { Id = 2, Description = "Test2" });
+            return Ok(x);
         }
     }
 }
