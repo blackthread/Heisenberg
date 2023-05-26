@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Heisenberg.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -176,6 +178,20 @@ namespace Heisenberg.Persistence.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "ToDoItems",
+                columns: new[] { "ID", "CreatedBy", "CreatedDate", "Description", "DueDate", "IsComplete", "LastModifiedBy", "LastModifiedDate" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description 1", new DateTime(2023, 5, 26, 5, 6, 52, 932, DateTimeKind.Utc).AddTicks(4945), false, null, null },
+                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Description 2", new DateTime(2023, 5, 26, 5, 6, 52, 932, DateTimeKind.Utc).AddTicks(4946), false, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "13", 0, "662431a0-15aa-4ef7-86c5-8a386f776b9d", "IdentityUser", "your@email.com", true, false, null, "YOUREMAIL@EMAIL.COM", "YOURUSERNAME", "AQAAAAIAAYagAAAAEMOQpOtTL6MrT5O3PY9E+UM19W0Gw07mescflHRk38Fnhgey7TxQSDl5TJciAbfGhg==", null, false, "d581b2ce-51c8-430f-80c3-53dfc8f3ba89", false, "YourUsername" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",

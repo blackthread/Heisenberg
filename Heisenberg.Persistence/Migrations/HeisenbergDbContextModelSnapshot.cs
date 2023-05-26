@@ -61,7 +61,7 @@ namespace Heisenberg.Persistence.Migrations
                             ID = 1,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description 1",
-                            DueDate = new DateTime(2023, 5, 25, 13, 5, 2, 758, DateTimeKind.Utc).AddTicks(1960),
+                            DueDate = new DateTime(2023, 5, 26, 5, 6, 52, 932, DateTimeKind.Utc).AddTicks(4945),
                             IsComplete = false
                         },
                         new
@@ -69,7 +69,7 @@ namespace Heisenberg.Persistence.Migrations
                             ID = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Description 2",
-                            DueDate = new DateTime(2023, 5, 25, 13, 5, 2, 758, DateTimeKind.Utc).AddTicks(1963),
+                            DueDate = new DateTime(2023, 5, 26, 5, 6, 52, 932, DateTimeKind.Utc).AddTicks(4946),
                             IsComplete = false
                         });
                 });
@@ -203,15 +203,15 @@ namespace Heisenberg.Persistence.Migrations
                         {
                             Id = "13",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dbea3548-f8cc-4ff3-ad13-85a8211ff3d7",
+                            ConcurrencyStamp = "662431a0-15aa-4ef7-86c5-8a386f776b9d",
                             Email = "your@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "YOUREMAIL@EMAIL.COM",
                             NormalizedUserName = "YOURUSERNAME",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP7DD0VttoLvX/exgnM6QaCIGKB8GGR2TOTqpcWl0uMvh212DgVfSuoxEJ2UMhQolA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMOQpOtTL6MrT5O3PY9E+UM19W0Gw07mescflHRk38Fnhgey7TxQSDl5TJciAbfGhg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9336684e-6f3b-4222-ae6f-aee5d3670034",
+                            SecurityStamp = "d581b2ce-51c8-430f-80c3-53dfc8f3ba89",
                             TwoFactorEnabled = false,
                             UserName = "YourUsername"
                         });
