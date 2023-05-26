@@ -14,11 +14,12 @@ namespace Heisenberg.Persistence
     {
         // private readonly ILoggedInUserService _loggedInUserService;
 
-        //   public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options, ILoggedInUserService loggedInUserService)
-        //      : base(options)
-        //   {
-        //       _loggedInUserService = loggedInUserService;
-        //   }
+           public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options)
+              : base(options)
+           {
+               //_loggedInUserService = loggedInUserService;
+           }
+
 
         /*
         set persistence as startup
@@ -27,20 +28,20 @@ namespace Heisenberg.Persistence
         run update-database
         */
 
-        public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options)
-            : base(options)
-        {
-        }
+        //    public HeisenbergDbContext(DbContextOptions<HeisenbergDbContext> options)
+        //        : base(options)
+        //    {
+        //    }
 
         public DbSet<AppUser> Users { get; set; }
 
         public DbSet<ToDoItem> ToDoItems { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=LAPTOP-9MEGBOCG;Database=HeisenbergDb;Trusted_Connection=True;TrustServerCertificate=true;");
-            base.OnConfiguring(optionsBuilder);
-        }
+ //       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+  //      {
+  //          optionsBuilder.UseSqlServer("Server=LAPTOP-9MEGBOCG;Database=HeisenbergDb;Trusted_Connection=True;TrustServerCertificate=true;");
+  //          base.OnConfiguring(optionsBuilder);
+  //      }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
